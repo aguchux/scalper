@@ -11,10 +11,9 @@ const Logs = require('./models/logs')
 
 
 server.get("/", (req, res) => {
-
     Logs.find({})
         .then((doc => {
-            res._construct.json(doc)
+            res.json(doc)
         }))
         .catch(err => console.log(err))
 })
