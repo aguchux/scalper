@@ -11,7 +11,7 @@ server.get("/", (req, res) => {
     res.status(200).json({ data: [], error: 1 })
 })
 
-// require('./modules/database')
+require('./modules/database')
 const port = process.env.PORT || 5000
 server.listen(port, async () => {
     console.log(`Server running on ${port}`)
