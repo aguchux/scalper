@@ -8,15 +8,11 @@ server.unsubscribe(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.get("/", (req, res) => {
-    res.set({
-        'Content-Type': 'application/json'
-    })
     res.status(200).json({ data: [], error: 1 })
 })
 
-// require('./modules/database')
+require('./modules/database')
 const port = process.env.PORT || 5000
 server.listen(port, async () => {
     console.log(`Server running on ${port}`)
-    logger.log('info', `Server running on ${port}`)
 })
