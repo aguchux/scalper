@@ -8,7 +8,7 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.get("/", (req, res) => {
-    res.send('<h1>Thank you</h1>')
+    res.status(200).json({ data: [], error: 1 })
 })
 
 // require('./modules/database')
