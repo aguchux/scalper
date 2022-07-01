@@ -7,8 +7,13 @@ server.use(cors())
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
+const Logs = require('./models/logs')
+
+
 server.get("/", (req, res) => {
-    res.send("<h2>We are there my guy</h2>")
+    Logs.find({}, (err, result) => {
+        res.json(result)
+    })
 })
 
 require('./modules/database')
