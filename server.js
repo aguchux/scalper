@@ -16,11 +16,20 @@ server.get("/api/v1", (req, res) => {
 })
 // API //
 
-server.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-})
+if (process.env.NODE_ENV == 'production') {
+    server.use(express.static(path.join(__dirname, 'frontend/dist')))
+    server.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+    })
+} else {
+    server.get("/", (req, res) => {
+        res.send("API Sent");
+    })
+}
 
-require('./modules/database')
+// connect Db
+const connect = require('./modules/database')
+connect()
 const port = process.env.PORT || 5000
 server.listen(port, async () => {
     console.log(`Server running on ${port}`)
