@@ -11,8 +11,17 @@ server.use(express.urlencoded({ extended: true }))
 const Logs = require('./models/logs')
 
 // API //
-server.get("/api/v1", async (req, res) => {
-    res.json({ data: 'Good to go' });
+server.get("/api/v1", (req, res) => {
+    const nlog = new Logs({
+        log: 'we are here'
+    })
+    nlog.save()
+        .then((docs) => {
+            res.json({ data: docs });
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 })
 // API //
 
