@@ -16,8 +16,8 @@ server.get("/api/v1", (req, res) => {
 })
 // API //
 
-server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/client", "/dist", "index.html"));
+server.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 })
 
 require('./modules/database')
