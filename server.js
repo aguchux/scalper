@@ -12,19 +12,6 @@ const Logs = require('./models/logs')
 
 // API //
 server.get("/api/v1", async (req, res) => {
-    const newLog = new Logs({
-        log: "this is a new log"
-    })
-    await newLog.save()
-        .then((result) => {
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-        .finall(() => {
-            process.exit(1)
-        })
     res.json({ data: 'Good to go' });
 })
 // API //
