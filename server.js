@@ -10,9 +10,14 @@ server.use(express.urlencoded({ extended: true }))
 
 const Logs = require('./models/logs')
 
+// API //
+server.get("/api/v1", (req, res) => {
+    res.json({ data: 'Good to go' });
+})
+// API //
 
 server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/dist/index.html"));
+    res.sendFile(path.join(__dirname, "/client", "/dist", "index.html"));
 })
 
 require('./modules/database')
